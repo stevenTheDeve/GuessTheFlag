@@ -26,10 +26,13 @@ struct ContentView: View {
             
                     
             Text("RADIO")
-                .font(.subheadline)
+                .font(.largeTitle)
                 .fontWeight(.bold)
                 .foregroundColor(Color.yellow)
                 .frame(width: 120, height: 44, alignment: .bottomTrailing)
+                .padding([.leading],125)
+                .padding(.top,50)
+            
             }
             .padding()
             .ignoresSafeArea()
