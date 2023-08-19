@@ -8,23 +8,22 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var showingAlert = false
+    
     var body: some View {
+        
+        
         ZStack {
-            VStack (spacing: 0){
-                Color.red
-                Color.cyan
-                
-            }
+            
+       
+            RadialGradient(gradient: Gradient(colors: [.blue, .black]), center: .center, startRadius: 20, endRadius: 200)
+            
             Text("UPHILL")
                 .font(.custom("San Francisco", size: 70))
                 .foregroundStyle(.secondary)
-                .fontWeight(.heavy)
                 .padding(20)
                 .background(.ultraThinMaterial)
-                    
-                    
             
-                    
             Text("RADIO")
                 .font(.largeTitle)
                 .fontWeight(.bold)
@@ -33,11 +32,40 @@ struct ContentView: View {
                 .padding([.leading],125)
                 .padding(.top,50)
             
+            
+            VStack {
+                Button("Show Alert") {
+                    showingAlert = true
+                }
+                .alert ("Important Message", isPresented: $showingAlert){
+                    Button ("Delete", role: .destructive) { }
+                    Button ("Cancel", role: .cancel) { }
+                } message: {
+                    Text ("Please Sign Up")
+                        .foregroundColor(.white)
+                    
+                } .padding(.top)
+                
+                
+                VStack (spacing: 10) {
+                    Button ("LOGIN"){ }
+                        .buttonStyle(.borderedProminent)
+                    Button ("LOGOUT", role: .destructive) { }
+                        .buttonStyle(.borderedProminent)
+                }
+                
+                
+                
             }
-            .padding()
-            .ignoresSafeArea()
-    }
+            .frame (maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+            
+        }
         
+       
+        .ignoresSafeArea()
+        
+}
+
 }
 
 struct ContentView_Previews: PreviewProvider {
